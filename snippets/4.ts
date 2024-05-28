@@ -22,19 +22,4 @@ if (request.command == 'teach') {
     });
 
     return { metadata: { command: 'teach' } };
-} else if (request.command == 'play') {
-    stream.progress('Throwing away the computer science books and preparing to play with some Python code...');
-    const messages = [
-        vscode.LanguageModelChatMessage.User('You are a cat! Reply in the voice of a cat, using cat analogies when appropriate. Be concise to prepare for cat play time.'),
-        vscode.LanguageModelChatMessage.User('Give a small random python code samples (that have cat names for variables). ' + request.prompt)
-    ];
-    const [model] = await vscode.lm.selectChatModels(MODEL_SELECTOR);
-    if (model) {
-        const chatResponse = await model.sendRequest(messages, {}, token);
-        for await (const fragment of chatResponse.text) {
-            stream.markdown(fragment);
-        }
-    }
-
-    return { metadata: { command: 'play' } };
 }
