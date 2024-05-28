@@ -1,0 +1,6 @@
+"commands": [
+    {
+        "name": "teach",
+        "description": "Pick at random a computer science concept then explain it in purfect way of a cat"
+    }
+]
