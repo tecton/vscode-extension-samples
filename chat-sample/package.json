@@ -17,8 +17,6 @@
     ],
     "activationEvents": [ ],
     "contributes": {
-        "chatParticipants": [
-        ],
         "commands": [
             {
                 "command": "cat.namesInEditor",
