@@ -14,6 +14,8 @@ const MODEL_SELECTOR: vscode.LanguageModelChatSelector = { vendor: 'copilot', fa
 export function activate(context: vscode.ExtensionContext) {
     // Define a Cat chat handler. 
     const handler: vscode.ChatRequestHandler = async (request: vscode.ChatRequest, context: vscode.ChatContext, stream: vscode.ChatResponseStream, token: vscode.CancellationToken): Promise<ICatChatResult> => {
+        // 4. Specific command in package.json
+        
         // 1. Use a prompt to define the role.
         const messages = [
             vscode.LanguageModelChatMessage.User(request.prompt)
@@ -32,7 +34,7 @@ export function activate(context: vscode.ExtensionContext) {
     const cat = vscode.chat.createChatParticipant(CAT_PARTICIPANT_ID, handler);
     cat.iconPath = vscode.Uri.joinPath(context.extensionUri, 'cat.jpeg');
     // 3. define followup actions
-
+    
     context.subscriptions.push(
         cat,
         // Register the command handler for the /meow followup
